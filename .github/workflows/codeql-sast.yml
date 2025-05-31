@@ -33,14 +33,3 @@ jobs:
       - uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: sarif-results/codeql.sarif
-      - name: Create Issue for High-Severity Findings
-        if: failure()
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: 'CodeQL: High-Severity Python Vulnerability',
-              body: 'Detected potential OWASP Top 10 issue (e.g., A03: Injection). Review SARIF in Security tab.'
-            })
