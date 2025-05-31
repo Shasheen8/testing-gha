@@ -2,39 +2,45 @@ name: CodeQL SAST Scan
 on:
   pull_request:
     branches: [main, develop]
-    paths: ["**/*.py"]
+    paths:
+      - "**.py" # Only scan Python files
   push:
     branches: [main, develop]
-    paths: ["**/*.py"]
-
+    paths:
+      - "**.py"
 jobs:
   codeql:
     runs-on: ubuntu-latest
     permissions:
-      security-events: write
+      security-events: write # Required for SARIF upload
       actions: read
       contents: read
-
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/cache@v4
         with:
-          fetch-depth: 0
-
-      - name: Debug Source Files
-        run: ls -lR src || echo "No src directory found"
-
+          path: ~/.codeql
+          key: ${{ runner.os }}-codeql-${{ hashFiles('**.py') }}
       - uses: github/codeql-action/init@v3
         with:
           languages: python
           config-file: ./codeql-config.yml
-
+          queries: +security-and-quality
       - uses: github/codeql-action/analyze@v3
         with:
+          upload: true
           output: sarif-results
-
-      - name: Debug SARIF File
-        run: ls -lR sarif-results || echo "No SARIF file generated"
-
       - uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: sarif-results/codeql.sarif
+      - name: Create Issue for High-Severity Findings
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'CodeQL: High-Severity Python Vulnerability',
+              body: 'Detected potential OWASP Top 10 issue (e.g., A03: Injection). Review SARIF in Security tab.'
+            })
