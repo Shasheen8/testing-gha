@@ -24,10 +24,10 @@ jobs:
         include:
           - language: javascript-typescript
             os: ubuntu-latest
-            build-mode: autobuild
+            build-mode: none
           - language: python
             os: ubuntu-latest
-            build-mode: autobuild
+            build-mode: none
           # Add more languages as needed
 
     steps:
