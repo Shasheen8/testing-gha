@@ -26,7 +26,7 @@ jobs:
       - uses: github/codeql-action/init@v3
         with:
           languages: python
-          config-file: ./codeql-config.yml
+          queries: +security-and-quality,./queries/python-security.ql
           source-root: ./src
 
       - uses: github/codeql-action/analyze@v3
