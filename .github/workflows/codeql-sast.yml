@@ -3,11 +3,11 @@ on:
   pull_request:
     branches: [main, develop]
     paths:
-      - "*.py" # Only scan Python files
+      - "**.py" # Only scan Python files
   push:
     branches: [main, develop]
     paths:
-      - "*.py"
+      - "**.py"
 jobs:
   codeql:
     runs-on: ubuntu-latest
