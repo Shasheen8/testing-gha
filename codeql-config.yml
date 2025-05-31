@@ -1,0 +1,10 @@
+name: CodeQL Configuration for Python
+paths:
+  - 'src/*.py'
+  - '**/*.py'
+paths-ignore:
+  - 'tests/**'
+  - 'docs/**'
+queries:
+  - uses: security-and-quality
+  - uses: ./queries/python-security.ql
