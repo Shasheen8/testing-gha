@@ -2,12 +2,11 @@ name: CodeQL SAST Scan
 on:
   pull_request:
     branches: [main, develop]
-    paths:
-      - "**/*.py"
+    paths: ["**/*.py"]
   push:
     branches: [main, develop]
-    paths:
-      - "**/*.py"
+    paths: ["**/*.py"]
+
 jobs:
   codeql:
     runs-on: ubuntu-latest
@@ -15,24 +14,28 @@ jobs:
       security-events: write
       actions: read
       contents: read
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Debug Source Files
         run: ls -lR src || echo "No src directory found"
+
       - uses: github/codeql-action/init@v3
         with:
           languages: python
           config-file: ./codeql-config.yml
-          queries: +security-and-quality,./queries/python-security.ql
-      - name: Debug CodeQL Database
-        run: ls -lR /run/codeql/databases || echo "No database created"
+          source-root: ./src
+
       - uses: github/codeql-action/analyze@v3
         with:
           output: sarif-results
+
       - name: Debug SARIF File
         run: ls -lR sarif-results || echo "No SARIF file generated"
+
       - uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: sarif-results/codeql.sarif

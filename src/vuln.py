@@ -1,3 +1,5 @@
 import pickle
-def load_model(file):
-    return pickle.load(file)  # A08: Insecure deserialization
+
+def load_data():
+    with open('data.pkl', 'rb') as f:
+        return pickle.load(f)
