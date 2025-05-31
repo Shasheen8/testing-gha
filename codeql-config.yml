@@ -5,5 +5,5 @@ paths-ignore:
   - tests/**
   - docs/**
 queries:
-  - uses: security-and-quality
-  - uses: testing-gha/custom-python-queries/
+  - security-and-quality
+  - ./testing-gha/custom-python-queries
