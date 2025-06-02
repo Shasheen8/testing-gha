@@ -1,4 +1,4 @@
-name: "CodeQL SAST Advanced Analysis"
+name: "SAST Advanced Analysis"
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   codeql:
-    name: CodeQL-SAST (${{ matrix.language }})
+    name: CodeQL (${{ matrix.language }})
     runs-on: ${{ matrix.os }}
     permissions:
       security-events: write
