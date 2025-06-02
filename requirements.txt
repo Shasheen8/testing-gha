@@ -1,3 +1,0 @@
-flask==0.12  # vulnerable to multiple issues including CVE-2018-1000656
-django==1.11  # EOL, known CVEs
-pyyaml==4.1  # CVE-2017-18342
