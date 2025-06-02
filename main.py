@@ -1,6 +1,9 @@
-import flask
 import yaml
+from flask import Flask
 
-@app.route("/yaml")
-def vuln():
-    return yaml.load("!!python/object/apply:os.system ['ls']", Loader=yaml.Loader)  # unsafe
+app = Flask(__name__)
+
+@app.route("/load")
+def unsafe_yaml():
+    data = "!!python/object/apply:os.system ['ls']"
+    return yaml.load(data, Loader=yaml.Loader)  # 🚨 CodeQL flags this
