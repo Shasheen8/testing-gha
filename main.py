@@ -6,4 +6,4 @@ app = Flask(__name__)
 @app.route("/load")
 def unsafe_yaml():
     data = "!!python/object/apply:os.system ['ls']"
-    return yaml.load(data, Loader=yaml.Loader)  # 🚨 CodeQL flags this
+    return yaml.load(data, Loader=yaml.Loader) 
