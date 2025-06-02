@@ -1,5 +1,6 @@
 name: "SAST Advanced Analysis"
 
+permissions: {}
 on:
   push:
     branches: ["main"]

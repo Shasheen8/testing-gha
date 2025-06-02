@@ -1,5 +1,6 @@
 name: SCA and IaC Scan
 
+permissions: {}
 on:
   push:
     branches: ["main", "master"]
