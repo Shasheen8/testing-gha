@@ -1,0 +1,9 @@
+# Simulated AWS Secret Key (DON'T USE IN PROD)
+AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
+AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+
+# Simulated GitHub Token
+GITHUB_TOKEN = "ghp_a1b2c3d4e5f6g7h8i9j0exampletoken"
+
+# Fake Slack Webhook
+SLACK_WEBHOOK = "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
