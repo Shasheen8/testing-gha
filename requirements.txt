@@ -1,0 +1,22 @@
+# Intentionally vulnerable dependencies for testing security scanners
+
+# Known vulnerable versions
+requests==2.20.0  # CVE-2018-18074
+flask==0.12.2     # Multiple CVEs
+pyyaml==3.13      # CVE-2017-18342
+pillow==5.2.0     # CVE-2019-16865
+django==1.11.15   # Multiple CVEs
+cryptography==2.3 # CVE-2018-10903
+urllib3==1.24.1   # CVE-2019-11324
+jinja2==2.10      # CVE-2019-10906
+werkzeug==0.14.1  # CVE-2019-14806
+numpy==1.15.0     # CVE-2019-6446
+
+# Packages with known security issues
+paramiko==2.4.0   # CVE-2018-1000805
+lxml==4.2.1       # CVE-2018-19787
+setuptools==40.0.0 # CVE-2022-40897
+
+# Malicious-looking package names (typosquatting examples)
+reqeusts          # Typo of 'requests'
+beautifulsoup     # Missing version number
