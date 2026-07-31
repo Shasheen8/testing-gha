@@ -17,6 +17,13 @@ paramiko==2.4.0   # CVE-2018-1000805
 lxml==4.2.1       # CVE-2018-19787
 setuptools==40.0.0 # CVE-2022-40897
 
+# New vulnerable deps added for demo
+flask-cors==3.0.0  # CVE-2024-16880
+python-jwt==3.3.0  # CVE-2022-29217
+
+# Typosquat package for supply-chain audit
+reqeusts==2.20.0
+
 # Malicious-looking package names (typosquatting examples)
 reqeusts          # Typo of 'requests'
 beautifulsoup     # Missing version number
