@@ -1,0 +1,5 @@
+min_severity: low
+workers: 8
+enable_workflow: true
+enable_iac: true
+supply_chain: true
